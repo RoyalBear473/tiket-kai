@@ -33,45 +33,45 @@ Route::get('/', function () {
 });
 
 // Print Testing Route
-Route::get('/print', [PrintController::class, 'index'])->middleware(['auth', 'verified']);
+Route::get('/print', [PrintController::class, 'index'])->middleware(['auth']);
 
-Route::get('/printpdf', [PrintController::class, 'print'])->middleware(['auth', 'verified']);
+Route::get('/printpdf', [PrintController::class, 'print'])->middleware(['auth']);
 
 // Complaint Route
-Route::resource('/complaints', ComplaintController::class)->middleware(['auth', 'verified']);
+Route::resource('/complaints', ComplaintController::class)->middleware(['auth']);
 
 //  Dashboard Route
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified']);
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth']);
 
 //  Order Route
-Route::resource('/orders', OrderController::class)->middleware(['auth', 'verified']);
+Route::resource('/orders', OrderController::class)->middleware(['auth']);
 
 //  Transaction Route
-Route::resource('/transactions', TransactionController::class)->middleware(['auth', 'verified']);
+Route::resource('/transactions', TransactionController::class)->middleware(['auth']);
 
 //  Train Route
-Route::resource('/trains', TrainController::class)->middleware(['auth', 'verified', 'can:isAdmin']);
+Route::resource('/trains', TrainController::class)->middleware(['auth', 'can:isAdmin']);
 
 //  Type Route
-Route::resource('/types', TypeController::class)->middleware(['auth', 'verified', 'can:isAdmin']);
+Route::resource('/types', TypeController::class)->middleware(['auth', 'can:isAdmin']);
 
 //  Track Route
-Route::resource('/tracks', TrackController::class)->middleware(['auth', 'verified', 'can:isAdmin']);
+Route::resource('/tracks', TrackController::class)->middleware(['auth', 'can:isAdmin']);
 
 //  Ticket Route
-Route::resource('/tickets', TicketController::class)->middleware(['auth', 'verified']);
+Route::resource('/tickets', TicketController::class)->middleware(['auth']);
 
 //  Price Route
-Route::resource('/prices', PriceController::class)->middleware(['auth', 'verified']);
+Route::resource('/prices', PriceController::class)->middleware(['auth']);
 
 //  Method Route
-Route::resource('/methods', MethodController::class)->middleware(['auth', 'verified', 'can:isAdmin']);
+Route::resource('/methods', MethodController::class)->middleware(['auth', 'can:isAdmin']);
 
 //  User Route
-Route::resource('/users', UserController::class)->middleware(['auth', 'verified']);
+Route::resource('/users', UserController::class)->middleware(['auth']);
 
 // Check Price Route
-Route::get('/checkprice', [OrderController::class, 'checkprice', 'verified']);
+Route::get('/checkprice', [OrderController::class, 'checkprice']);
 
 // Route::get('/posts', function () {
 //     // Tag::create([
